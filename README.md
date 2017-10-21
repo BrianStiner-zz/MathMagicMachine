@@ -1,1 +1,2 @@
-# MathMagicMachine
+## MathMagicMachine
+### Brian Stiner
