@@ -3,8 +3,9 @@ import numpy as np
 import matplotlib.image as mpimg
 
 
-IMAGE_HEIGHT, IMAGE_WIDTH, IMAGE_CHANNELS = 100, 100, 3
-INPUT_SHAPE = (IMAGE_HEIGHT, IMAGE_WIDTH, IMAGE_CHANNELS)
+IN_HEIGHT, IN_WIDTH, IMAGE_CHANNELS = 160, 320, 3
+OUT_HEIGHT, OUT_WIDTH = 100, 100
+INPUT_SHAPE = (OUT_HEIGHT, OUT_WIDTH, IMAGE_CHANNELS)
 
 
 def load_image(image_dir):
@@ -30,13 +31,12 @@ def resize(image):
     """
     Resize the image to the input shape used by the network model
     """
-    return cv2.resize(image, (IMAGE_WIDTH, IMAGE_HEIGHT), cv2.INTER_AREA)
+    return cv2.resize(image, (OUT_WIDTH, OUT_HEIGHT), cv2.INTER_AREA)
 
 
 def rgb2yuv(image):
     """
     Convert the image from RGB to YUV (This is what the NVIDIA model does)
-    #but it doesn't seem to work here
     """
     return cv2.cvtColor(image, cv2.COLOR_RGB2YUV)
 
@@ -93,9 +93,9 @@ def random_shadow(image):
     """
     # (x1, y1) and (x2, y2) forms a line
     # xm, ym gives all the locations of the image
-    x1, y1 = IMAGE_WIDTH * np.random.rand(), 0
-    x2, y2 = IMAGE_WIDTH * np.random.rand(), IMAGE_HEIGHT
-    xm, ym = np.mgrid[0:IMAGE_HEIGHT, 0:IMAGE_WIDTH]
+    x1, y1 = IN_HEIGHT * np.random.rand(), 0
+    x2, y2 = IN_WIDTH * np.random.rand(), IN_HEIGHT
+    xm, ym = np.mgrid[0:IN_HEIGHT, 0:IN_WIDTH]
 
     # mathematically speaking, we want to set 1 below the line and zero otherwise
     # Our coordinate is up side down.  So, the above the line:

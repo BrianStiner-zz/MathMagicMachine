@@ -57,7 +57,12 @@ model.add(Dense(25, activation='elu'))
 model.add(Dropout(0.2))
 model.add(Dense(10, activation='elu'))
 model.add(Dense(1))
-model.summary()
+
+from IPython.display import SVG
+from keras.utils.vis_utils import model_to_dot
+
+SVG(model_to_dot(model).create(prog='dot', format='svg'))
+
 
 
 checkpoint = ModelCheckpoint('model-{epoch:03d}.h5',
