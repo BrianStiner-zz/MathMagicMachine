@@ -1,0 +1,5 @@
+http://www.gti.ssr.upm.es/data/Vehicle_database.html - owncollection
+https://github.com/udacity/self-driving-car/tree/master/annotations object-dataset/object-detection
+http://www.vision.caltech.edu/html-files/archive.html
+Udacity stuff - vehicles/non-vehicles
+
